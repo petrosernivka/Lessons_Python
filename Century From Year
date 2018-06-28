@@ -1,0 +1,4 @@
+https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097
+
+def century(year):
+  return int(int(year/100)+int(str(year)[len(str(year))-2:])**0.001)
