@@ -1,0 +1,5 @@
+https://www.codewars.com/kata/5641c3f809bf31f008000042
+
+def two_decimal_places(number):
+    #raise NotImplementedError("TODO: two_decimal_places")
+    return float(int(number*100))/100
