@@ -1,1 +1,20 @@
-less
+https://www.codewars.com/kata/will-you-make-it
+
+def zero_fuel(distance_to_pump, mpg, fuel_left):
+    return True if mpg * fuel_left >= distance_to_pump else False
+    
+    
+    
+https://www.codewars.com/kata/interactive-dictionary
+
+class Dictionary():
+    def __init__(self, word = '', definition = ''):
+        self.word = word
+        self.definition = definition
+        
+    def newentry(self, word, definition):
+        self.word = word
+        self.definition = definition
+    
+    def look(self, word):
+        return self.definition if self.word == word else '''Can't find entry for ''' + word
