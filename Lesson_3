@@ -34,3 +34,44 @@ def getTotal(costs, items, tax):
     return round(sum(costs[i] for i in items)*(1+tax),2)
 -------------------------------------------------------------------------------------------
 
+https://www.codewars.com/kata/noob-debug-1-fix-the-string-sum
+
+def add(s1, s2):
+    s1 = s1.encode()
+    s2 = s2.encode()
+    s1 = sum(s1)
+    s2 = sum(s2)
+    return s1+s2
+-------------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/make-a-square-box
+
+def box(n):
+    ar = []
+    a = '-'
+    ar.append(a * n)
+    i = 1
+    while i <= (n-2):
+        ar.append(a + ' ' * (n-2) + a)
+        i += 1
+    ar.append(a * n)
+    return ar
+------------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/21-sticks
+
+def makeMove(sticks):
+    if sticks in (21, 20, 16, 12, 8, 4):
+        p = 1
+    elif sticks > 16:
+        p = sticks - 16
+    elif sticks > 12:
+        p = sticks - 12
+    elif sticks > 8:
+        p = sticks - 8
+    elif sticks > 4:
+        p = sticks - 4
+    else:
+        p = sticks
+    return p
+-----------------------------------------------------------------------------------------
