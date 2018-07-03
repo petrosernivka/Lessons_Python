@@ -82,3 +82,25 @@ def pig_latin(word):
     return word if len(word) < 4 else word[1:]+word[0]+"ay"
 -----------------------------------------------------------------------------------------
 
+https://www.codewars.com/kata/alien-accent
+
+def convert(st):
+    return st.replace('o','u').replace('a','o')
+-----------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/will-there-be-enough-space
+
+def enough(cap, on, wait):
+    return 0 if cap >= on + wait else wait - cap + on
+-----------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/no-yelling
+
+def filter_words(st):
+    return st.capitalize().replace('  ',' ').replace('  ',' ').strip()
+-----------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/simple-find-the-distance-between-two-points
+
+def distance(x1, y1, x2, y2):
+    return round(((x2 - x1)**2 + (y2 - y1)**2)**(0.5), 2)
