@@ -2,8 +2,7 @@ https://www.codewars.com/kata/will-you-make-it
 
 def zero_fuel(distance_to_pump, mpg, fuel_left):
     return True if mpg * fuel_left >= distance_to_pump else False
-    
-    
+-------------------------------------------------------------------------------------------    
     
 https://www.codewars.com/kata/interactive-dictionary
 
@@ -18,3 +17,20 @@ class Dictionary():
     
     def look(self, word):
         return self.definition if self.word == word else '''Can't find entry for ''' + word
+-------------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/reversing-words-in-a-string
+
+def reverse(st):
+    return ' '.join(reversed(st.split(' ')))
+-------------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/how-much-will-you-spend
+
+def getTotal(costs, items, tax):
+    for key in items:
+        if key not in costs:
+            costs[key] = 0
+    return round(sum(costs[i] for i in items)*(1+tax),2)
+-------------------------------------------------------------------------------------------
+
