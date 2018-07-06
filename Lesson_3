@@ -157,3 +157,56 @@ class Grid():
         return self.grid
 -----------------------------------------------------------------------------------------
 
+https://www.codewars.com/kata/esolang-minibitmove
+
+def interpreter(tape, array):
+    import math
+    array_new, x, y = '', 0, 0
+    a = (tape * math.ceil(len(array) / tape.count('0'))).split('0')
+    
+    while x <= len(array) - 1:
+        if a[y] == '':
+            array_new += array[x]
+            x += 1
+            y += 1
+        else:
+            i = 0
+            b = array[x]
+            while i <= len(a[y]) - 1:
+                b = str(abs(int(b)-1))
+                i += 1
+            array_new += b
+            x += 1
+            y += 1
+  
+    return array_new
+----------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/esolang-tick
+
+def interpreter(tape):
+    a = tape.split('*')
+    i = a.pop()
+    count_plus, count_men, nenull, tape_interp = [], [], [], ''
+    
+    for i in a:
+        count_plus.append(i.count('+'))
+        count_men.append(i.count('<'))
+    
+    x, z = 0, 0
+    for i in count_plus:
+        if i == 0:
+            tape_interp += chr(nenull[z-1-count_men[x]])
+        else:
+            tape_interp += chr(count_plus[x])
+            nenull.append(count_plus[x])
+            z += 1
+        x += 1
+    
+    return tape_interp
+---------------------------------------------------------------------------------------
+
+https://www.codewars.com/kata/the-modulo-3-sequence
+
+def sequence(n):
+    return int('01120221'[n - int(n/8)*8 - 1])
