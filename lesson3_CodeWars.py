@@ -5,14 +5,12 @@ def zero_fuel(distance_to_pump, mpg, fuel_left):
 
 #https://www.codewars.com/kata/interactive-dictionary
 class Dictionary():
-    def __init__(self, word = '', definition = ''):
-        self.word = word
-        self.definition = definition
+    def __init__(self):
+        self.d = {}
     def newentry(self, word, definition):
-        self.word = word
-        self.definition = definition
+        self.d[word] = definition
     def look(self, word):
-        return self.definition if self.word == word else '''Can't find entry for ''' + word
+        return self.d[word] if word in self.d else '''Can't find entry for ''' + word
 
 
 #https://www.codewars.com/kata/reversing-words-in-a-string
