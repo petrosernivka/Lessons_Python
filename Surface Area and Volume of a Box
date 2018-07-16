@@ -1,6 +1,0 @@
-https://www.codewars.com/kata/565f5825379664a26b00007c
-
-def get_size(w,h,d):
-    #your code here
-    box = [w*h*2+w*d*2+h*d*2, w*h*d]
-    return box
