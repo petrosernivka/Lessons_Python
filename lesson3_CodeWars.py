@@ -8,11 +8,9 @@ class Dictionary():
     def __init__(self, word = '', definition = ''):
         self.word = word
         self.definition = definition
-        
     def newentry(self, word, definition):
         self.word = word
         self.definition = definition
-    
     def look(self, word):
         return self.definition if self.word == word else '''Can't find entry for ''' + word
 
