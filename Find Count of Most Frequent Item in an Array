@@ -1,7 +1,0 @@
-https://www.codewars.com/kata/56582133c932d8239900002e
-
-def most_frequent_item_count(collection):
-    rez = 0
-    for i in collection:
-	    rez = max(rez, collection.count(i))
-    return rez
