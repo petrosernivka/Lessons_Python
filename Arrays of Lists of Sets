@@ -1,6 +1,6 @@
 def solve(arr):
     for element in arr:
-        arr[arr.index(element)] = ''.join(sorted(frozenset(element)))
+        arr[arr.index(element)] = ''.join(sorted(set(element)))
     
     sum_positions = []
     already_used = []
