@@ -1,0 +1,23 @@
+def solution(args):
+    rang_start = rang_end = args[0]
+    rez_fin_str = str(args[0])
+    for i in args[1:]:
+        if i == rang_end + 1:
+            rang_end += 1
+            if i == args[-1]:
+                if rang_end - 1 == rang_start:
+                    rez_fin_str += ',' + str(i)
+                else:
+                    rez_fin_str += '-' + str(i)
+        else:
+            if rang_start == rang_end:
+                rez_fin_str += ',' + str(i)
+                rang_start = rang_end = i
+            elif rang_end - 1 == rang_start:
+                rez_fin_str += ',' + str(rang_end) + ',' + str(i)
+                rang_start = rang_end = i
+            else:
+                rez_fin_str += '-' + str(rang_end) + ',' + str(i)
+                rang_start = rang_end = i
+        
+    return rez_fin_str
