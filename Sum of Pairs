@@ -38,7 +38,4 @@ def sum_pairs(ints, s):
             rez = i
             
     return list(rez) if rez else None
---------------------------------------------------------------------------------
-
-5. OK:
 
