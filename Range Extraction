@@ -1,23 +1,21 @@
 def solution(args):
-    rang_start = rang_end = args[0]
-    rez_fin_str = str(args[0])
+    start = end = args[0]
+    rez_fin = str(args[0])
     for i in args[1:]:
-        if i == rang_end + 1:
-            rang_end += 1
+        if i == end + 1:
+            end += 1
             if i == args[-1]:
-                if rang_end - 1 == rang_start:
-                    rez_fin_str += ',' + str(i)
+                if end - 1 == start:
+                    rez_fin += ',' + str(i)
                 else:
-                    rez_fin_str += '-' + str(i)
+                    rez_fin += '-' + str(i)
         else:
-            if rang_start == rang_end:
-                rez_fin_str += ',' + str(i)
-                rang_start = rang_end = i
-            elif rang_end - 1 == rang_start:
-                rez_fin_str += ',' + str(rang_end) + ',' + str(i)
-                rang_start = rang_end = i
+            if start == end:
+                rez_fin += ',' + str(i)
+            elif end - 1 == start:
+                rez_fin += ',' + str(end) + ',' + str(i)
             else:
-                rez_fin_str += '-' + str(rang_end) + ',' + str(i)
-                rang_start = rang_end = i
+                rez_fin += '-' + str(end) + ',' + str(i)
+            start = end = i
         
-    return rez_fin_str
+    return rez_fin
