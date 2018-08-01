@@ -9,7 +9,7 @@ def ident_denoms(num1, num2):
             min_num -= 1
     return int(num1), int(num2)
 
-class Fraction:
+class Fraction(object):
     
     def __init__(self, numerator, denominator):
         numerator, denominator = ident_denoms(numerator, denominator)
@@ -17,12 +17,14 @@ class Fraction:
         self.denominator = denominator
         
     def __repr__(self):
-        return str(self.numerator) + '/' + str(self.denominator)
-        
-    def __str__(self):
-        return str(self.numerator) + '/' + str(self.denominator)
+        return '%s/%s' % (self.numerator, self.denominator)
         
     def __add__(self, other):
         numerator_new = self.numerator * other.denominator + other.numerator * self.denominator
         denominator_new = self.denominator * other.denominator
-        return str(Fraction(numerator_new, denominator_new))
+        return Fraction(numerator_new, denominator_new)
+        
+    def __eq__(self, other):
+        check1 = self.numerator * other.denominator
+        check2 = other.numerator * self.denominator
+        return check1 == check2
