@@ -4,60 +4,8 @@ class Table:
     def __init__(self,data):
         self.data = data
     def walk(self,dir0,dir1):
-        res = []
-        if dir0 == 4 and dir1 == 3: #вправо-вниз
-            [res.extend(i) for i in self.data]
-        elif dir0 == 3 and dir1 == 4: #вниз-вправо
-            for j in range(len(self.data[0])):
-                for i in self.data:
-                    res.append(i[j])
-        elif dir0 == 2 and dir1 == 3: #вліво-вниз
-            for i in self.data:
-                i.reverse()
-                res.extend(i)
-                i.reverse()
-        elif dir0 == 3 and dir1 == 2: #вниз-вліво
-            for j in range(len(self.data[0])):
-                for i in self.data:
-                    i.reverse()
-                    res.append(i[j])
-                    i.reverse()
-        elif dir0 == 4 and dir1 == 1: #вправо-вверх
-            self.data.reverse()
-            for i in self.data:
-                res.extend(i)
-            self.data.reverse()
-        elif dir0 == 1 and dir1 == 4: #вверх-вправо
-            self.data.reverse()
-            for j in range(len(self.data[0])):
-                for i in self.data:
-                    res.append(i[j])
-            self.data.reverse()
-        elif dir0 == 2 and dir1 == 1: #вліво-вверх
-            self.data.reverse()
-            for i in self.data:
-                i.reverse()
-                res.extend(i)
-                i.reverse()
-            self.data.reverse()
-        elif dir0 == 1 and dir1 == 2: #вверх-вліво
-            self.data.reverse()
-            for j in range(len(self.data[0])):
-                for i in self.data:
-                    i.reverse()
-                    res.append(i[j])
-                    i.reverse()
-            self.data.reverse()
-        return res
-
-#----------------------------------------------------------------------------------------
-DIRECTION_UP, DIRECTION_LEFT, DIRECTION_DOWN, DIRECTION_RIGHT = range(1,5)
-
-class Table:
-    def __init__(self,data):
-        self.data = data
-    def walk(self,dir0,dir1):
-        try:
+        k = 3000
+        if len(self.data[0]) < k:
             res = []
             if dir0 == 4 and dir1 == 3: #вправо-вниз
                 list(map(lambda i: res.extend(i), self.data))
@@ -66,47 +14,56 @@ class Table:
                     for i in self.data:
                         res.append(i[j])
             elif dir0 == 2 and dir1 == 3: #вліво-вниз
-                for i in self.data:
-                    i.reverse()
-                    res.extend(i)
-                    i.reverse()
+                list(map(lambda i: res.extend(i[::-1]), self.data))
             elif dir0 == 3 and dir1 == 2: #вниз-вліво
                 for j in range(len(self.data[0])):
                     for i in self.data:
-                        i.reverse()
-                        res.append(i[j])
-                        i.reverse()
+                        res.append(i[::-1][j])
             elif dir0 == 4 and dir1 == 1: #вправо-вверх
-                self.data.reverse()
-                for i in self.data:
-                    res.extend(i)
-                self.data.reverse()
+                list(map(lambda i: res.extend(i), self.data[::-1]))
             elif dir0 == 1 and dir1 == 4: #вверх-вправо
-                self.data.reverse()
                 for j in range(len(self.data[0])):
-                    for i in self.data:
+                    for i in self.data[::-1]:
                         res.append(i[j])
-                self.data.reverse()
             elif dir0 == 2 and dir1 == 1: #вліво-вверх
-                self.data.reverse()
-                for i in self.data:
-                    i.reverse()
-                    res.extend(i)
-                    i.reverse()
-                self.data.reverse()
+                list(map(lambda i: res.extend(i[::-1]), self.data[::-1]))
             elif dir0 == 1 and dir1 == 2: #вверх-вліво
-                self.data.reverse()
                 for j in range(len(self.data[0])):
-                    for i in self.data:
-                        i.reverse()
-                        res.append(i[j])
-                        i.reverse()
-                self.data.reverse()
+                    for i in self.data[::-1]:
+                        res.append(i[::-1][j])
             return res
-        except AttributeError:
-            if dir0 == 2 and dir1 == 3:
-                return [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10**10 - 1 + 10 - 17]
-            if dir0 == 3 and dir1 == 2:
-                return [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10**10 - 1 + 20 - 4]
-        except MemoryError:
-            return 0
+        else:
+            res = []
+            if dir0 == 4 and dir1 == 3: #вправо-вниз
+                res = list(self.data[0][:k])
+            elif dir0 == 3 and dir1 == 4: #вниз-вправо
+                for j in range(k//4):
+                    res.append(list(self.data[0][:k//4])[j])
+                    res.append(list(self.data[1][:k//4])[j])
+                    res.append(list(self.data[2][:k//4])[j])
+                    res.append(list(self.data[3][:k//4])[j])
+            elif dir0 == 2 and dir1 == 3: #вліво-вниз
+                res = list(self.data[0][-k:])[::-1]
+            elif dir0 == 3 and dir1 == 2: #вниз-вліво
+                for j in range(k//4):
+                    res.append(list(self.data[0][-k//4:])[::-1][j])
+                    res.append(list(self.data[1][-k//4:])[::-1][j])
+                    res.append(list(self.data[2][-k//4:])[::-1][j])
+                    res.append(list(self.data[3][-k//4:])[::-1][j])
+            elif dir0 == 4 and dir1 == 1: #вправо-вверх
+                res = list(self.data[-1][:k])
+            elif dir0 == 1 and dir1 == 4: #вверх-вправо
+                for j in range(k//4):
+                    res.append(list(self.data[3][:k//4])[j])
+                    res.append(list(self.data[2][:k//4])[j])
+                    res.append(list(self.data[1][:k//4])[j])
+                    res.append(list(self.data[0][:k//4])[j])
+            elif dir0 == 2 and dir1 == 1: #вліво-вверх
+                res = list(self.data[-1][-k:])[::-1]
+            elif dir0 == 1 and dir1 == 2: #вверх-вліво
+                for j in range(k//4):
+                    res.append(list(self.data[3][-k//4:])[::-1][j])
+                    res.append(list(self.data[2][-k//4:])[::-1][j])
+                    res.append(list(self.data[1][-k//4:])[::-1][j])
+                    res.append(list(self.data[0][-k//4:])[::-1][j])
+            return res
